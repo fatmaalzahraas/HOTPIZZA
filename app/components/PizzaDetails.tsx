@@ -61,7 +61,6 @@ const PizzaDetails = ({ pizza, isOpen, setIsOpen }: Props) => {
     addToCart(pizzaData)
   }
   return (
-    <Suspense fallback={<LoadingSkeleton />}>
       <div className="flex flex-col lg:flex-row items-center">
         <div className="lg:w-[55%] w-[75%] xxs:w-[55%]">
           <Image src={pizza.image} alt={pizza.name} width={320} height={320} />
@@ -102,7 +101,6 @@ const PizzaDetails = ({ pizza, isOpen, setIsOpen }: Props) => {
           </div>
         </div>
       </div>
-    </Suspense>
   );
 };
 

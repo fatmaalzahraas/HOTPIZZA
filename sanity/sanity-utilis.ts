@@ -3,8 +3,10 @@ import {createClient, groq} from 'next-sanity';
 import clientConfig from './config/client-config';
 import { Order,OrderUserInfo } from '@/types/order';
 import {uuid} from '@sanity/uuid'
+const delay = () => new Promise<void>((res) => setTimeout(() => res(), 1500))
 export async function getAllPizza() : Promise<Pizza[]> {
     //const client = createClient(clientConfig);
+    await delay();
     return createClient(clientConfig).fetch(
         groq`*[_type == "pizza"]{
             _id,
@@ -55,6 +57,7 @@ export async function createOrder(
         }
 }
 export async function getOrder(orderId: string) : Promise<Order>{
+    await delay();
     return createClient(clientConfig).fetch(
         groq`*[_type == "order" && _id == $orderId][0]{
             _id,
